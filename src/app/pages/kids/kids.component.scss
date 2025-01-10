@@ -1,0 +1,33 @@
+.contenedor-kids{
+  position: relative;
+  text-align: center;
+}
+
+.colum-kids{
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 525px;
+  margin: 0px auto;
+}
+
+.textosec{
+  font-family: "Quicksand", sans-serif;
+  font-size: 20px;
+  margin-right: 0%;
+  margin-left: 0%;
+}
+
+.titulo-kids{
+  font-family: "Roboto", serif ;
+  font-weight: 600;
+  font-size: 30px;
+  color: #545454;
+  margin-top: 0% !important;
+  margin-bottom: 0% !important;
+}
+
+.img-icon{
+  width: 25%;
+}

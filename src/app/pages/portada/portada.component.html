@@ -1,0 +1,80 @@
+<div class="contenedor-portada">
+  <div class="portada-container" >
+    <img src="assets/img-02.jpg" alt="Invitación de Boda" class="imagen-portada" />
+    <br>
+    <p  class="tituloportada">{{traductorService.getTexto("primerTitulo")}}</p>
+    <p class="nombrePortada">{{traductorService.getTexto("tNombres")}}</p>
+  </div>
+
+  <div class="contenedor-conteo">
+
+    <!-- <div class="contenedor-button-idioma">
+      <label class="switch">
+        <input type="checkbox" (change)="cambiarIdioma($event)" [attr.checked]="traductorService.lenguaje === 'ES' ? null : false">
+        <span class="slider"></span>
+      </label> -->
+      <!--
+      <label class="toggle-switch">
+        <input type="checkbox"  [attr.checked]="traductorService.lenguaje === 'EN' ? true : false" (change)="cambiarIdioma($event)">
+        <div class="toggle-switch-background">
+          <div class="toggle-switch-handle"></div>
+        </div>
+      </label>-->
+      <!-- <p class="texto-idioma">
+        {{traductorService.getTexto("traduccion")}}
+      </p>
+      <div class="music-player">
+        <audio controls>
+          <source src="assets/cancion.mp3" type="audio/mp3">
+          {{traductorService.getTexto("pCancion")}}
+
+        </audio>
+      </div>
+    </div> -->
+    <p class="titulop">{{traductorService.getTexto("subTitulo")}}</p>
+    <p class="textosec">
+      {{traductorService.getTexto("mensajeBienvenida1")}}
+    </p><br>
+    <p class="textosec" data-aos="fade-up">
+      {{traductorService.getTexto("mensajeBienvenida2")}}
+    </p><br>
+    <p class="textosec" data-aos="fade-up">
+      {{traductorService.getTexto("mensajeBienvenida3")}}
+    </p>
+    <br>
+    <br>
+    <br>
+
+    <p class="solofaltan" data-aos="zoom-out">{{traductorService.getTexto("soloFaltan")}}</p><br>
+    <div class="contador">
+      <div class="tiempo">
+        <div class="cuadro">
+          <div class="numero" id="dias"></div>
+          <div class="etiqueta">{{traductorService.getTexto("counterDias")}}</div>
+        </div>
+      </div>
+      <div class="tiempo">
+        <div class="cuadro">
+          <div class="numero" id="horas"></div>
+          <div class="etiqueta">{{traductorService.getTexto("counterHoras")}}</div>
+        </div>
+      </div>
+      <div class="tiempo">
+        <div class="cuadro">
+          <div class="numero" id="minutos"></div>
+          <div class="etiqueta">{{traductorService.getTexto("counterMinutos")}}</div>
+        </div>
+      </div>
+      <div class="tiempo">
+        <div class="cuadro">
+          <div class="numero" id="segundos">30</div>
+          <div class="etiqueta">{{traductorService.getTexto("counterSeg")}}</div>
+        </div>
+      </div>
+    </div>
+
+
+    <br>
+    <br>
+  </div>
+</div>

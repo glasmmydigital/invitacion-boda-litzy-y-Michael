@@ -1,0 +1,53 @@
+.contenedor-fech-img{
+  position: relative;
+  text-align: center;
+  //padding: 40px 0px;
+}
+.colum-fech-img{
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 525px;
+  margin: 0px auto;
+}
+.img-pareja{
+  width: 100%;
+  height: auto;
+}
+.textosec{
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.5rem;
+  margin-right: 0%;
+  margin-left: 0%;
+}
+.fecha-boda{
+  font-family: "Great Vibes", serif;
+  font-style: italic;
+  font-size: 55px;
+  color: #b18c55;
+  margin-top: 0% !important;
+  margin-bottom: 0% !important;
+}
+
+@media (max-width: 768px){
+  .fecha-boda{
+    font-family: "Great Vibes", serif;
+    font-size: 40px;
+    margin-bottom: 0;
+    color: #cba161;
+    margin-top: 0% !important;
+    margin-bottom: 0% !important;
+  }
+}
+@media (max-width: 415px){
+  .fecha-boda{
+    font-family: "Great Vibes", serif;
+    font-size: 40px;
+    margin-bottom: 0;
+    color: #cba161;
+    margin-top: 0% !important;
+    margin-bottom: 0% !important;
+  }
+}

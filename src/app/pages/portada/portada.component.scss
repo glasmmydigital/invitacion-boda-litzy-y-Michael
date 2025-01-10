@@ -1,0 +1,290 @@
+.portada-container {
+  position: relative;
+}
+
+.imagen-portada {
+  width: 100%;
+  height: auto; /* Ajusta según tus necesidades */
+}
+
+.nombrePortada {
+  position: absolute;
+  width: 100%;
+  top: 40%; /* Ajusta para mover el texto hacia arriba o abajo */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el texto en el medio */
+  font-family: Nathalia;
+  font-size: 6rem;
+  color: #ffffff; /* Cambia el color según el contraste necesario */
+  margin-top: -15%;
+  text-shadow:
+    0px 0px 10px rgba(0, 0, 0, 0.5),
+    0px 0px 20px rgba(0, 0, 0, 0.4),
+    0px 0px 30px rgba(0, 0, 0, 0.3);
+}
+
+@font-face{font-family:Nathalia;src:url(/assets/Nathalia.ttf) format("truetype")}
+
+.tituloportada {
+  position: absolute;
+  width: 100%;
+  top: 39%; /* Ajusta para mover el texto hacia arriba o abajo */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el texto en el medio */
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  margin-bottom: 0;
+  color: #ffffff; /* Cambia el color según el contraste necesario */
+  margin-top: -20%;
+  text-shadow:
+    0px 0px 10px rgba(0, 0, 0, 0.5),
+    0px 0px 20px rgba(0, 0, 0, 0.4),
+    0px 0px 30px rgba(0, 0, 0, 0.3); 
+}
+
+.testasinvitado {
+  color: #819AAB;
+  font-size: 25px;
+}
+
+.solofaltan{
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: #b18c55; /* Cambia el color según el contraste necesario */
+  font-size: 30px;
+  margin-top: 0% !important;
+  margin-bottom: 0% !important;
+}
+
+.contenedor-portada {
+  position: relative;
+  text-align: center;
+
+  .imagen-portada {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Asegura que la imagen cubra todo el área */
+    max-width: 565px; /* Tamaño máximo para mantenerla más estrecha */
+    margin: 0 auto; /* Centra la imagen */
+  }
+
+  /* Media query para pantallas de tablets */
+  @media (max-width: 768px) {
+    .nombrePortada {
+      margin-top: -32%;
+      font-size: 4rem;
+      width: 100%;
+    }
+
+    .tituloportada {
+      margin-top: -40%;
+      font-size: 30px;
+      width: 100%;
+    }
+
+    .testasinvitado {
+      color: #819AAB;
+      font-size: 20px;
+    }
+
+    .imagen-portada {
+      max-width: 500px; /* Ajusta el ancho máximo en tabletas */
+    }
+  }
+
+  .testasinvitado {
+    font-family: "Playfair Display", serif;
+    font-size: 40px;
+  }
+
+  .contenedor-conteo {
+    //background-color: #819AAB; // Color de fondo
+    padding: 20px; // Agrega padding
+    display: flex; // Usar flexbox para alinear elementos
+    flex-direction: column; // Dirección de los elementos en columna
+    align-items: center; // Centra los elementos
+    max-width: 525px; // Asegura el mismo ancho que la imagen
+    margin: 0px auto; // Centra horizontalmente y añade margen superior e inferior
+  }
+
+  .titulop{
+    font-family:  "Great Vibes", serif ;
+    font-size: 3rem;
+    color: #b29565;
+    margin-right: 5%;
+    margin-right: 5%;
+    margin-top: 0% !important;
+    margin-bottom: 0% !important;
+  }
+
+  .textosec{
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    margin-right: 0%;
+    margin-left: 0%;
+    margin-bottom: 0%;
+  }
+
+  .contenedor-button-idioma {
+    display: flex; /* Asegura que los elementos estén alineados en una fila */
+    align-items: center; /* Alinea verticalmente los elementos */
+    gap: 10px; /* Espaciado entre el botón y el texto */
+    margin-bottom: 20px;
+    justify-content: center; /* Opcional: centra horizontalmente dentro del contenedor */
+  }
+  .texto-idioma{
+    font-family: "Quicksand", sans-serif;
+    font-size: 20px;
+    margin: 0%;
+  }
+
+  .music-player {
+    margin-bottom: 20px; // Espacio entre el reproductor y el contador
+  }
+
+  .contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Espaciado entre bloques */
+  }
+
+  .tiempo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cuadro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #cba1614d; /* Cuadro con fondo dorado transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 12px 20px; /* Espaciado dentro del cuadro */
+    width: 100px; /* Ancho fijo para todos los cuadros */
+    height: 120px; /* Alto fijo para que todos tengan el mismo tamaño */
+    text-align: center;
+  }
+
+  .numero {
+    font-size: 2.5rem; /* Tamaño reducido del número */
+    font-family: "Quicksand", sans-serif;
+    color: #b18c55; /* Color más fuerte */
+  }
+
+  .etiqueta {
+    font-size: 1.3rem; /* Tamaño de la etiqueta */
+    font-family: "Quicksand", sans-serif;
+    color: #b18c55; /* Color más fuerte */
+    margin-top: 5px;
+  }
+
+
+
+  // Responsividad
+  @media (max-width: 768px) {
+    .numero {
+      font-size: 1.5rem;
+    }
+
+    .etiqueta {
+      font-size: 1rem;
+    }
+
+    .cuadro {
+      width: 90px;
+      height: 110px;
+    }
+  }
+
+
+  @media (max-width: 480px) {
+    .numero {
+      font-size: 1.8rem;
+    }
+
+    .etiqueta {
+      font-size: 0.9rem;
+    }
+
+    .cuadro {
+      width: 80px;
+      height: 100px;
+    }
+    .nombrePortada {
+      margin-top: -34%;
+      font-size: 59px;
+      width: 100%;
+    }
+
+    .tituloportada {
+      margin-top: -48%;
+      font-size: 30px;
+      width: 100%;
+    }
+
+    .testasinvitado {
+      color: #819AAB;
+      font-size: 30px;
+    }
+
+
+  }
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #efe3cf;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  width: 2em;
+  inset: 0;
+  background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.switch input:checked + .slider {
+  background: #b29565;
+}
+
+.switch input:focus + .slider {
+  box-shadow: 0 0 1px #b29565;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(1.6em);
+}

@@ -1,0 +1,83 @@
+.contenedor-des-img{
+  position: relative;
+  text-align: center;
+  padding: 40px 0px;
+}
+
+.colum-des-img{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 525px;
+  margin: 0px auto;
+}
+
+.img-pareja{
+  width: 100%;
+  height: auto;
+}
+.textosec{
+  font-size: 60px;
+  text-align: center;
+  font-family: Nathalia;
+  color: #0b3b2a;
+  margin-top: 2%;
+  margin-bottom: 0%;
+}
+
+.nom-pareja{
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  color: #222222;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+// collage
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, auto); /* 2 filas ajustadas automáticamente */
+  gap: 6px; /* Espaciado entre los elementos */
+  width: 100%; /* Ocupa todo el ancho del contenedor padre */
+}
+
+.grid-item {
+  background-color: transparent; /* Solo para visualización inicial */
+  border: 2px solid transparent;
+  height: 250px; /* Altura fija para las celdas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+}
+
+.grid-item img {
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+  height: 100%; /* Ocupa la altura completa del contenedor */
+  object-fit: cover; /* Recorta la imagen proporcionalmente */
+}
+
+.grid-item{
+  grid-column: span 2;
+}
+
+.grid-item--width2 {
+  grid-column: span 4; /* Ocupa 2 columnas */
+}
+
+.grid-item--height2 {
+  grid-row: span 2; /* Ocupa 2 filas */
+}
+
+.grid-item--height3{
+  grid-column: span 3;
+}
+
+@media (max-width: 768px) {
+  .grid-item {
+    height: 180px; /* Reduce la altura en pantallas pequeñas */
+  }
+}
