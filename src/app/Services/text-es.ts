@@ -26,7 +26,7 @@ export const TEXT_ES:{[key: string]: string } = {
   tituloCeremonia: 'CEREMONIA',
   direccionCeremonia: 'Av. Principal la Paloma, San Miguel Tecpán Jilotzingo',
   horaCeremonia: 'Hora: 4:00 P.M.',
-  ubicacion: 'Ver Ubicación',
+  ubicacion: 'VER UBICACIÓN',
   tituloRecepcion: 'RECEPCIÓN',
   direccionRecepcion: 'Convento Santa Clara, Antigua Guatemala',
   horaRecepcion: 'Hora: 7:30 P.M.',
@@ -55,7 +55,7 @@ export const TEXT_ES:{[key: string]: string } = {
   textoVestimentaDos: 'Por favor, evita vestir de blanco y sus tonalidades en honor a nuestra celebración.',
   // NUESTROS MOMENTOS
   tituloMomentos: 'Nuestros Momentos',
-  textoMomentos: 'Ayuda a que crezcan nuestros recuerdos de este día tan especial. Usa el QR para compartir tus momentos y ser parte de nuestra historia.',
+  textoMomentos: 'Ayuda a que crezcan nuestros recuerdos de este día tan especial. Haz clic en el botón para compartir tus momentos y ser parte de nuestra historia.',
   // REGALOS
   tituloRegalo: 'Regalos',
   textoRegaloUno: 'Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, haz clic aquí para ver las opciones',

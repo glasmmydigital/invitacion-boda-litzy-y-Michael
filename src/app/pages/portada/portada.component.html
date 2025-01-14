@@ -22,15 +22,14 @@
       </label>-->
       <!-- <p class="texto-idioma">
         {{traductorService.getTexto("traduccion")}}
-      </p>
+      </p>-->
       <div class="music-player">
         <audio controls>
           <source src="assets/cancion.mp3" type="audio/mp3">
           {{traductorService.getTexto("pCancion")}}
 
         </audio>
-      </div>
-    </div> -->
+      </div> 
     <p class="titulop">{{traductorService.getTexto("subTitulo")}}</p>
     <p class="textosec">
       {{traductorService.getTexto("mensajeBienvenida1")}}
@@ -45,8 +44,8 @@
     <br>
     <br>
 
-    <p class="solofaltan" data-aos="zoom-out">{{traductorService.getTexto("soloFaltan")}}</p><br>
-    <div class="contador">
+    <p data-aos="fade-up" class="solofaltan">{{traductorService.getTexto("soloFaltan")}}</p><br>
+    <div class="contador" data-aos="fade-up">
       <div class="tiempo">
         <div class="cuadro">
           <div class="numero" id="dias"></div>
