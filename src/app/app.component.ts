@@ -17,6 +17,7 @@ import { GuarFechComponent } from './pages/guar-fech/guar-fech.component';
 import { ImgFloresComponent } from './pages/img-flores/img-flores.component';
 import { SegImgFloresComponent } from './pages/seg-img-flores/seg-img-flores.component';
 import { ConfirmacionCuadradoComponent } from './pages/forms-confirmacion/confirmacion-cuadrado/confirmacion-cuadrado.component';
+import { ContadorComponent } from './pages/contador/contador.component';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,8 @@ import { ConfirmacionCuadradoComponent } from './pages/forms-confirmacion/confir
     MomentosComponent,
     SegImgFloresComponent,
     RegalosComponent,
-    ConfirAsistenComponent,
+    ConfirmacionCuadradoComponent,
+    ContadorComponent,
     DesImgComponent,
     GlasmmyComponent
   ],

@@ -39,23 +39,23 @@
 .carousel-container {
   position: relative;
   margin: 0 auto;
-  overflow: hidden; /* Esconde las imágenes que se salen del área visible */
-  width: 100%; /* Establece un ancho que se adapte al diseño */
-  max-width: 1200px; /* Ajusta según tu necesidad */
-  height: 325px; /* Establece una altura fija */
+  overflow: hidden; /* Esconde las partes de las imágenes que sobresalgan */
+  width: 100%;
+  max-width: 1200px; /* Ajusta según tu diseño */
+  height: 325px; /* Altura fija del carrusel */
 }
 
 .carousel {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Transición suave para las imágenes */
+  transition: transform 0.5s ease-in-out; /* Transición suave para animaciones */
   will-change: transform; /* Optimiza la animación */
 }
 
 .carousel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Asegura que las imágenes no se deformen */
-  border-radius: 8px; /* Bordes suaves para un toque elegante */
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 100%; /* Ocupa todo el alto del contenedor */
+  object-fit: cover; /* Ajusta la imagen al contenedor sin deformarla */
+  border-radius: 8px; /* Opcional: Bordes suaves */
 }
 
 .cerm-recep-button{

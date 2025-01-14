@@ -1,0 +1,28 @@
+<div class="contenedor-contador">
+  <div class="portada-contador" >
+    <div class="colum-contador">
+      <p class="solofaltan" >{{traductorService.getTexto("soloFaltan")}}</p>
+      <div class="contador">
+        <div class="tiempo">
+          <span id="dias" class="numero"></span>
+          <span class="etiqueta">{{traductorService.getTexto("counterDias")}}</span>
+        </div>
+        <div class="separator"></div> <!-- Línea de separación -->
+        <div class="tiempo">
+            <span id="horas" class="numero"></span>
+            <span class="etiqueta">{{traductorService.getTexto("counterHoras")}}</span>
+        </div>
+        <div class="separator"></div> <!-- Línea de separación -->
+        <div class="tiempo">
+          <span id="minutos" class="numero"></span>
+          <span class="etiqueta">{{traductorService.getTexto("counterMinutos")}}</span>
+        </div>
+        <div class="separator"></div> <!-- Línea de separación -->
+        <div class="tiempo">
+          <span id="segundos" class="numero"></span>
+          <span class="etiqueta">{{traductorService.getTexto("counterSeg")}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
