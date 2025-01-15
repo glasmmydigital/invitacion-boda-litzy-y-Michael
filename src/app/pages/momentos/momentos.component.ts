@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, Inject, PLATFORM_ID, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { TraductorServicio } from '../../Services/traductor.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -9,9 +9,17 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './momentos.component.html',
   styleUrls: ['./momentos.component.scss']
 })
-export class MomentosComponent implements AfterViewInit {
+export class MomentosComponent implements AfterViewInit, OnDestroy {
 
-  slideIndex: number = 0;  // Define el índice del slide
+  slideIndex: number = 0;  // Índice del slide
+  totalSlides: number = 0; // Total de slides
+  currentIndex: number = 0; // Índice de la imagen activa
+  slideInterval: any; // Intervalo para cambiar de slide automáticamente
+
+  // Referencias a los botones de navegación
+  @ViewChild('prevButton') prevButton: ElementRef | undefined;
+  @ViewChild('nextButton') nextButton: ElementRef | undefined;
+  @ViewChild('slides') slidesContainer: ElementRef | undefined;
 
   constructor(
     public traductorService: TraductorServicio,
@@ -20,30 +28,67 @@ export class MomentosComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Llamar a la función para iniciar el carrusel después de que la vista se haya inicializado
-      this.showSlides();
-      setInterval(() => {
-        this.moveSlide(1);  // Mueve el carrusel cada 3 segundos
-      }, 3000);  // Intervalo de 3 segundos
+      // Espera a que el contenido esté renderizado
+      setTimeout(() => {
+        // Total de slides
+        this.totalSlides = this.slidesContainer?.nativeElement.children.length || 0;
+        this.showSlide(this.currentIndex); // Muestra la primera imagen
+        // Cambiar la imagen automáticamente
+        this.slideInterval = setInterval(() => {
+          this.moveSlide(1);  // Mueve el carrusel cada 3 segundos
+        }, 3000); // Intervalo de 3 segundos
+      });
+    }
+
+    // Event listeners para los botones de navegación
+    this.prevButton?.nativeElement.addEventListener('click', () => {
+      this.prevSlide();
+    });
+
+    this.nextButton?.nativeElement.addEventListener('click', () => {
+      this.nextSlide();
+    });
+  }
+
+  // Mostrar la imagen actual
+  showSlide(index: number): void {
+    const slides = this.slidesContainer?.nativeElement.children;
+    if (slides) {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active'); // Elimina la clase 'active'
+      }
+      // Solo la imagen activa se muestra
+      if (slides[index]) {
+        slides[index].classList.add('active');
+      }
     }
   }
 
-  showSlides(): void {
-    const slides = document.querySelectorAll('.carousel img') as NodeListOf<HTMLImageElement>;
-    if (this.slideIndex >= slides.length) {
-      this.slideIndex = 0;
-    }
-    if (this.slideIndex < 0) {
-      this.slideIndex = slides.length - 1;
-    }
-
-    // Mueve el carrusel a la posición correcta
-    const carousel = document.querySelector('.carousel') as HTMLElement;
-    carousel.style.transform = `translateX(-${this.slideIndex * 100}%)`;
+  // Cambiar a la siguiente imagen
+  nextSlide(): void {
+    this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+    this.showSlide(this.currentIndex);
   }
 
-  moveSlide(step: number): void {
-    this.slideIndex += step;
-    this.showSlides();
+  // Cambiar a la imagen anterior
+  prevSlide(): void {
+    this.currentIndex = (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+    this.showSlide(this.currentIndex);
+  }
+
+  // Cambiar de imagen automáticamente después de un intervalo
+  moveSlide(direction: number): void {
+    if (direction === 1) {
+      this.nextSlide();
+    } else if (direction === -1) {
+      this.prevSlide();
+    }
+  }
+
+  // Limpiar el intervalo al destruir el componente
+  ngOnDestroy(): void {
+    if (this.slideInterval) {
+      clearInterval(this.slideInterval);
+    }
   }
 }

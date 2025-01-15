@@ -1,26 +1,51 @@
 .portada-container {
   position: relative;
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho de la pantalla */
 }
 
 .imagen-portada {
   width: 100%;
-  height: auto; /* Ajusta según tus necesidades */
+  height: auto; /* Asegura que la imagen cubra todo el ancho de la pantalla */
 }
 
-.nombrePortada {
+.texto-superpuesto {
   position: absolute;
-  width: 100%;
-  top: 40%; /* Ajusta para mover el texto hacia arriba o abajo */
+  top: 60%; /* Centra el texto verticalmente */
   left: 50%;
-  transform: translate(-50%, -50%); /* Centra el texto en el medio */
-  font-family: Nathalia;
-  font-size: 6rem;
+  transform: translate(-50%, -50%); /* Centra el texto horizontalmente */
+  text-align: center; /* Centra el texto dentro del contenedor */
+  color: #ffffff; /* Color del texto */
+  width: 100%; /* Hace que el contenedor de texto ocupe todo el ancho de la pantalla */
+  z-index: 2; /* Asegura que el texto se quede por encima de la imagen */
+  
+}
+
+.tituloportada {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
   color: #ffffff; /* Cambia el color según el contraste necesario */
-  margin-top: -15%;
+  margin-bottom: 10px; /* Espacio debajo del título */
   text-shadow:
     0px 0px 10px rgba(0, 0, 0, 0.5),
     0px 0px 20px rgba(0, 0, 0, 0.4),
-    0px 0px 30px rgba(0, 0, 0, 0.3);
+    0px 0px 30px rgba(0, 0, 0, 0.3); /* Sombra para el texto */
+}
+
+.heading {
+  color: #ffffff;
+  font-family: 'Caveat', cursive;
+  font-size: 6em; /* Puedes ajustar este tamaño según lo que necesites */
+  font-weight: normal;
+  text-shadow: 0 0 10px #000;
+  line-height: 1.1; /* Ajusta la altura de línea si es necesario */
+}
+
+.heading-subtext {
+  color: #fff;
+  display: block;
+  font-family: "Playfair Display", serif;
+  font-size: .6em; /* Puedes ajustar este tamaño según lo que necesites */
+  line-height: 1.2; /* Asegura que el texto no esté demasiado pegado */
 }
 
 @font-face{font-family:Nathalia;src:url(/assets/Nathalia.ttf) format("truetype")}

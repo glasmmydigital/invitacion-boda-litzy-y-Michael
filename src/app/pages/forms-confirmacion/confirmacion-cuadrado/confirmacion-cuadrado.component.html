@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid" >
+  <div class="row" >
     <ngx-skeleton-loader *ngIf="!invitacionConfimacion" appearance="line" count="8"/>
     <div class="form-container" *ngIf="invitacionConfimacion" [formGroup]="formGroup">
       <br><br>
@@ -39,7 +39,7 @@
         <div *ngIf="invitacionConfimacion.confirmacion?.confirmado == 1" >
           <p *ngIf="invitacionConfimacion.confirmacion" class="text-center text" id="total-invitados">
             {{ confirmContainer['total-invitados'] || traductorService.getTexto('totalInvitadosConfirmado') }}
-            <span class=""
+            <span class="numeros"
                   id="total-number-invitados">{{ invitacionConfimacion.confirmacion.total_personas_conf || "" }}</span>
           </p>
         </div>
@@ -110,7 +110,6 @@
                 [disabled]="true"
                 />
               </div>
-              <br>
               <div *ngIf="!formGroup.get('cant_asistir')?.valid" class="error-alert-text" role="alert">
                 <p *ngIf="validators('cant_asistir').required || validators('cant_asistir').min"
                   id="error-cant-asistir-req">
@@ -123,7 +122,7 @@
               </div>
             </div>
 
-            <div *ngIf="!invitacionConfimacion.confirmacion" class="container-cant-asis">
+            <div *ngIf="!invitacionConfimacion.confirmacion && invitacionConfimacion.mesa_asignada" class="container-cant-asis">
               <div class="colum-asistentes">
                 <label class="form-label  label-text" for="mesa_asignada" id="label-cant-asis">
                   {{ confirmContainer['label-cant-asis'] || traductorService.getTexto('mesaAsignada') }}
@@ -200,16 +199,20 @@
             <div *ngFor="let acompanante of invitacionConfimacion.confirmacion?.acompanantes?.split(',')">
               <!-- Aquí puedes mostrar información específica de cada acompañante -->
             </div>
-            <ul class="list-group list-group-flush text-center" [ngStyle]="{'list-style-type': (invitacionConfimacion.confirmacion?.acompanantes === 'No especificado' || !invitacionConfimacion.confirmacion?.acompanantes) ? 'none' : 'disc'}">
-              <li *ngFor="let acompanante of (invitacionConfimacion.confirmacion?.acompanantes === 'No especificado' 
-                  ? [traductorService.getTexto('invitNoEspecificado')] 
-                  : (invitacionConfimacion.confirmacion?.acompanantes || '').split(','))"
-                  class="form-confirmacion-text-acompanantes label-text" 
-                  id="acompanante">
+            <ul class="list-group list-group-flush text-center" [ngStyle]="{'list-style-type': (invitacionConfimacion.confirmacion?.acompanantes && cantAsistir > 1) ? 'disc' : 'none'}">
+              <li *ngFor="let acompanante of (
+                  (invitacionConfimacion.confirmacion?.acompanantes === 'No especificado' && cantAsistir > 1) 
+                    ? [traductorService.getTexto('invitNoEspecificado')] 
+                    : (invitacionConfimacion.confirmacion?.acompanantes 
+                        ? (invitacionConfimacion.confirmacion?.acompanantes || '').split(',')
+                        : []
+                    )
+                )"
+                class="form-confirmacion-text-acompanantes label-text" id="acompanante">
                 {{ acompanante }}
               </li>
             </ul>
-            
+
             <h5 class="text text-center" *ngIf="!invitacionConfimacion.confirmacion?.acompanantes">
               {{ confirmContainer['sin-acompanantes'] || traductorService.getTexto('txtNoAsistencia') }}
             </h5>
@@ -247,7 +250,9 @@
         </div>
 
       </label>
-      <br><br><br><br>
+      <div *ngIf="!isFechaLimitePasada()">
+        <br><br><br><br>
+      </div>
     </div>
     <!--Contenedor del modal
     <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">

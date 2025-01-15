@@ -36,26 +36,62 @@
   margin-left: 5%;
 }
 
-.carousel-container {
+.textosec1{
+  font-family: "Roboto", serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: #545454;
+  margin-top: 0% !important;
+  margin-bottom: 0% !important;
+}
+
+.galeriaFotosBoda {
   position: relative;
-  margin: 0 auto;
-  overflow: hidden; /* Esconde las partes de las imágenes que sobresalgan */
-  width: 100%;
-  max-width: 1200px; /* Ajusta según tu diseño */
-  height: 325px; /* Altura fija del carrusel */
+  max-width: 100%;
+  overflow: hidden;
+  margin: auto;
 }
 
-.carousel {
+.galeriaFotosBoda-carousel {
   display: flex;
-  transition: transform 0.5s ease-in-out; /* Transición suave para animaciones */
-  will-change: transform; /* Optimiza la animación */
+  transition: transform 0.5s ease-in-out;
+  height: 400px; /* Establece una altura fija para el carrusel */
 }
 
-.carousel img {
-  width: 100%; /* Ocupa todo el ancho del contenedor */
-  height: 100%; /* Ocupa todo el alto del contenedor */
-  object-fit: cover; /* Ajusta la imagen al contenedor sin deformarla */
-  border-radius: 8px; /* Opcional: Bordes suaves */
+.galeriaFotosBoda-slide {
+  min-width: 100%;
+  display: none; /* Cambiamos a none para ocultar las imágenes por defecto */
+}
+
+.galeriaFotosBoda-slide.active {
+  display: block; /* Solo la imagen activa se mostrará */
+}
+
+.galeriaFotosBoda-slide img {
+  width: 100%; /* Hace que las imágenes ocupen todo el ancho del contenedor */
+  height: 100%; /* Hace que las imágenes ocupen todo el alto del contenedor */
+  object-fit: cover; /* Asegura que las imágenes cubran completamente el área del contenedor sin distorsionarse */
+}
+
+.galeriaFotosBoda-prev,
+.galeriaFotosBoda-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.galeriaFotosBoda-prev {
+  left: 0;
+}
+
+.galeriaFotosBoda-next {
+  right: 0;
 }
 
 .cerm-recep-button{

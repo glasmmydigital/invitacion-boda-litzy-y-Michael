@@ -7,8 +7,8 @@ import { ApiService } from '../../../Services/api/api.service';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import {NgIconComponent, NgIconsModule, provideIcons} from "@ng-icons/core";
 import { TraductorServicio } from '../../../Services/traductor.service';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import Swal from 'sweetalert2';
-import 'sweetalert2/src/sweetalert2.scss';
 
 import {
   matAutorenew,
@@ -52,7 +52,7 @@ export class ConfirmacionCuadradoComponent extends Confirmacion implements OnIni
   confirmContainer: any = {};
   declare bootstrap: any;
   private texts: any;
-  
+
   // Confirmación de asistencia:
   showForm: boolean = false;
   showNotAttendingConfirmation: boolean = false;
@@ -107,21 +107,26 @@ export class ConfirmacionCuadradoComponent extends Confirmacion implements OnIni
   }
 
   isFechaLimitePasada(): boolean {
-  
+
     if (!this.ultFecha) {
       console.error('La fecha límite es nula o no está definida.');
       return false; // Manejo de error o comportamiento predeterminado
     }
-  
+
     const fechaLimite = new Date(this.ultFecha);
-  
+
     if (isNaN(fechaLimite.getTime())) {
       console.error('La fecha límite no es válida:', this.ultFecha);
       return false;
     }
-  
+
     const hoy = new Date();
-    return hoy > fechaLimite;
+    if(this.invitacionConfimacion?.confirmacion?.fecha_confirmacion){
+      return false;
+    }else{
+      return hoy > fechaLimite;
+    }
+
   }
 
   fechLimit() {
@@ -144,9 +149,9 @@ export class ConfirmacionCuadradoComponent extends Confirmacion implements OnIni
     if (inputValue !== "") {
       // Opción 1: Confirmar asistencia
       Swal.fire({
-          title: '¿Confirmas esta asistencia?',
+          title: this.traductorService.getTexto("confirmAsistenciatitle"),
           showCancelButton: true,
-          cancelButtonText: 'Cancelar',
+          cancelButtonText: this.traductorService.getTexto("opcancelar"),
           confirmButtonColor: "#B6C5D5",
           cancelButtonColor: "cba161",
 
@@ -161,11 +166,11 @@ export class ConfirmacionCuadradoComponent extends Confirmacion implements OnIni
   } else {
       // Opción 2: No agregar invitados
       Swal.fire({
-          title: '¿No agregarás invitados?',
-          text: 'Puedes agregar invitados si lo necesitas.',
+          title: this.traductorService.getTexto("sininvitadostitle"),
+          text: this.traductorService.getTexto("sininvitadostxt"),
           showCancelButton: true,
-          confirmButtonText: 'No agregaré',
-          cancelButtonText: 'Sí agregaré',
+          confirmButtonText: this.traductorService.getTexto("txtnoagregare"),
+          cancelButtonText: this.traductorService.getTexto("txtsiagregare"),
           confirmButtonColor: "#B6C5D5",
           cancelButtonColor: "cba161",
           customClass: {

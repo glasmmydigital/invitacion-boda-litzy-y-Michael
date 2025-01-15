@@ -100,6 +100,13 @@ export const TEXT_ES:{[key: string]: string } = {
   estasSeguro: '¿Estas seguro?',
   fechaConfirmacionCaducada: '¡Ya paso la fecha limite para confirmar tu sistencia!',
   fechaConfirmacionCaducadaDos: 'Si gustas puedes comunicarte con los novios.',
+   //VENTANA EMERGENTE CONFIRMACION
+   confirmAsistenciatitle: '¿Confirmas esta asistencia?',
+   opcancelar: 'Cancelar',
+   sininvitadostitle: '¿No agregarás invitados?',
+   sininvitadostxt: 'Puedes agregar invitados si lo necesitas.',
+   txtnoagregare: 'No agregaré',
+   txtsiagregare: 'Si agregaré',
   // DESPEDIDA
   tituloDespedida: 'Con amor',
   DespedidaNombres: 'Litzy y Michael',

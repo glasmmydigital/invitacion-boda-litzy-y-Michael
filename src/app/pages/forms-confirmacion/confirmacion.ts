@@ -12,7 +12,11 @@ export abstract class Confirmacion {
   protected constructor(private apiServ: ApiService, protected fb: FormBuilder) {
   }
 
+  
+
   protected _invitacionConfimacion?: InvitadoModelRespose;
+
+  
 
   get invitacionConfimacion() {
     return this._invitacionConfimacion;
@@ -54,7 +58,15 @@ export abstract class Confirmacion {
       asistencia = false;
     }
     this.isLoading = true;
-    if (this.formGroup?.valid) {//Entrará cuando el invitado confirme asistencia y describa el nombre de sus acompañantes
+    
+    const acompanantesList = this.acompanantesList.map((controlName, index) => {
+      const element = document.getElementById(`acompanante-${index + 1}`) as HTMLInputElement;
+      return element ? element.value.trim() : '';
+    });
+  
+    const hasAcompananteValue = acompanantesList.some(value => value.length > 0);
+  
+    if (this.formGroup?.valid || hasAcompananteValue) {//Entrará cuando el invitado confirme asistencia y describa el nombre de sus acompañantes
       const values: any = {
         invitado_nombre: this.formGroup?.get("nombre")?.value,
         total_personas_conf: this.formGroup?.get("cant_asistir")?.value,
@@ -65,11 +77,21 @@ export abstract class Confirmacion {
         fecha_confirmacion: new Date().getTime(),
       }
       console.log(this.formGroup.value)
-      if (asistencia == true) {
+      if (asistencia === true) {
+        // Obtenemos la lista de nombres de los acompañantes
         const nombreInvitadosList = this.acompanantesList.map(controlNames => (this.formGroup.get(controlNames)?.value as string).trim());
-        const nombreInvitadosText = nombreInvitadosList.reduce((prev, current) => prev + current + ",", "") as string;
-        values['acompanantes'] = nombreInvitadosText.substring(0, nombreInvitadosText.length - 1)
+      
+        // Verificamos si solo hay un nombre
+        if (nombreInvitadosList.length === 1) {
+          // Si solo hay un nombre, asignamos ese nombre sin coma
+          values['acompanantes'] = nombreInvitadosList[0];
+        } else {
+          // Si hay más de un nombre, los unimos con coma usando reduce
+          const nombreInvitadosText = nombreInvitadosList.reduce((prev, current) => prev + current + ",", "");
+          values['acompanantes'] = nombreInvitadosText.substring(0, nombreInvitadosText.length - 1);  // Eliminar la última coma
+        }
       }
+      
       this.apiServ.confirmar(values).subscribe({
         next: response => {
           if (!isNaN(response)) {
@@ -159,11 +181,10 @@ export abstract class Confirmacion {
         Validators.min(1),
         Validators.max(this.invitacionConfimacion?.cantidad_invitados as number)
       ]],
-      mesa_asignada: [this.invitacionConfimacion?.mesa_asignada, [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(this.invitacionConfimacion?.mesa_asignada as any)
-      ]],
+      mesa_asignada: [
+        this.invitacionConfimacion?.mesa_asignada,
+        []  // Este campo no tiene validaciones (puede ser opcional)
+      ],
       checkBAgregarNombres: [true],
     };
 
